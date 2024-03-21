@@ -1,0 +1,23 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1711035138
+icon.svg::CompressedTexture2D::8810243576145294445::1710514985::1710514990::1::::<><>::
+::res://Scenes/::1710960929
+player.tscn::PackedScene::8125130950207940090::1710960929::0::1::::<><>::res://Scripts/player.gd<>uid://c5muek6ejvrjm::::res://Textures/Player/Green Dino Cling.png<>uid://x7ygpihhb2lv::::res://Textures/Player/Green Dino Fall.png<>uid://7cxr1xtgfs04::::res://Textures/Player/Green Dino Idle.png<>uid://ckteawgli8q62::::res://Textures/Player/Green Dino Die.png<>uid://bhh5eo8fmkoyl::::res://Textures/Player/Green Dino Jump.png<>uid://bd68cufxq0yvf::::res://Textures/Player/Green Dino Walk.png
+::res://Scenes/Levels/::1710960929
+level0.tscn::PackedScene::5219436048193852410::1710960929::0::1::::<><>::uid://dhs5g66i3p3rb::::res://Scenes/Levels/world.tscn
+world.tscn::PackedScene::7689576657179343787::1710960929::0::1::::<><>::uid://dn04yp6i2at67::::res://Scenes/player.tscn<>uid://btriorb3tk8te::::res://Textures/Tiles/Grass Tileset.png<>uid://dq14ja0aljp2e::::res://Textures/Tiles/Stone Tileset.png<>uid://be4trp6y3gm6h::::res://Textures/Tiles/Lava Tile.png<>uid://tsc128od63sy::::res://Textures/Tiles/Spike Tiles.png
+::res://Scripts/::1710521852
+player.gd::GDScript::-1::1710521852::0::1::::<>CharacterBody2D<>::
+::res://Textures/::1710515206
+::res://Textures/Player/::1710518892
+Green Dino Cling.png::CompressedTexture2D::6904501265923892218::1710515235::1710515238::1::::<><>::
+Green Dino Die.png::CompressedTexture2D::5514197014359054177::1710518751::1710518751::1::::<><>::
+Green Dino Fall.png::CompressedTexture2D::1681872214930642895::1710515117::1710515117::1::::<><>::
+Green Dino Idle.png::CompressedTexture2D::2251600003264282335::1710515117::1710515117::1::::<><>::
+Green Dino Jump.png::CompressedTexture2D::2894022672945430627::1710515117::1710515117::1::::<><>::
+Green Dino Walk.png::CompressedTexture2D::2662991216590586519::1710515117::1710515117::1::::<><>::
+::res://Textures/Tiles/::1710515238
+Grass Tileset.png::CompressedTexture2D::3755614767431303758::1710515214::1710515214::1::::<><>::
+Lava Tile.png::CompressedTexture2D::2728227831339217541::1710515221::1710515221::1::::<><>::
+Spike Tiles.png::CompressedTexture2D::1370916163073107476::1710515225::1710515225::1::::<><>::
+Stone Tileset.png::CompressedTexture2D::8337734274463929102::1710515214::1710515214::1::::<><>::
