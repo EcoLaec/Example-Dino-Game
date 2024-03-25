@@ -14,6 +14,7 @@ extends CharacterBody2D
 @export var cling_speed = 75.0
 @export var air_jumps = 1
 @export var air_jump_scale = 0.8
+@export var max_health = 9
 
 # Reference Variables
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,9 +26,11 @@ var clinging = false
 var respawn_position = Vector2.ZERO
 var air_jumps_made = 0
 var just_wall_jumped = false
+var health = 9
 
 func _ready():
 	respawn_position = global_position
+	Global.player = self
 
 func _physics_process(delta):
 	var input_axis = Input.get_axis("Left","Right")
@@ -122,7 +125,7 @@ func update_animations(input_axis):
 func respawn():
 	global_position = respawn_position
 
-func die():
+func play_death_animation():
 	sprite.play("die")
 	velocity = Vector2.ZERO
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -130,7 +133,27 @@ func die():
 	await sprite.animation_finished
 	process_mode = Node.PROCESS_MODE_INHERIT
 	sprite.process_mode = Node.PROCESS_MODE_INHERIT
-	respawn()
+
+func die():
+	play_death_animation()
+	await play_death_animation()
+	get_tree().reload_current_scene()
+
+func damage(amount : int, force_respawn : bool):
+	health -= amount
+	if health <= 0:
+		die()
+		return
+	if force_respawn:
+		play_death_animation()
+		await play_death_animation()
+		respawn()
+	else:
+		pass
 
 func _on_hazard_collider_body_entered(_body):
-	call_deferred("die")
+	call_deferred("damage", 1, true)
+
+
+func _on_freeze_time_timeout():
+	get_tree().paused = false

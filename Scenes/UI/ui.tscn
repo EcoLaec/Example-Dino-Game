@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://uj007ovtvuj3"]
+
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_j8hge"]
+[ext_resource type="PackedScene" uid="uid://dav58uib37rpk" path="res://Scenes/UI/health_object.tscn" id="2_wtefc"]
+[ext_resource type="Texture2D" uid="uid://ckgnp4sl835na" path="res://Textures/Player/Egg Full.png" id="3_yesly"]
+[ext_resource type="Texture2D" uid="uid://duibvs32p53qy" path="res://Textures/Player/Egg Hurt.png" id="4_ysodb"]
+[ext_resource type="Texture2D" uid="uid://cjmw6uiixbxg2" path="res://Textures/Player/Egg Badly Hurt.png" id="5_l4lcu"]
+[ext_resource type="Texture2D" uid="uid://c7ev82ot4h6lj" path="res://Textures/Player/Egg Broken.png" id="6_ewucf"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_j8hge")
+health_object = ExtResource("2_wtefc")
+full_health = ExtResource("3_yesly")
+hurt_health = ExtResource("4_ysodb")
+badly_hurt_health = ExtResource("5_l4lcu")
+empty_health = ExtResource("6_ewucf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Health" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1

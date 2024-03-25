@@ -1,7 +1,14 @@
 Timer
+TextureRect
+Control
+Container
+AnimatedSprite2D
+HBoxContainer
+VBoxContainer
+MarginContainer
+CanvasLayer
 CollisionShape2D
 Area2D
 TileMap
 Camera2D
-AnimatedSprite2D
 CharacterBody2D
