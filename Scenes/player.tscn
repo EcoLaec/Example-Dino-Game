@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dn04yp6i2at67"]
+[gd_scene load_steps=45 format=3 uid="uid://dn04yp6i2at67"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_kqygu"]
 [ext_resource type="Texture2D" uid="uid://c5muek6ejvrjm" path="res://Textures/Player/Green Dino Cling.png" id="1_kx87q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckteawgli8q62" path="res://Textures/Player/Green Dino Die.png" id="3_i2461"]
 [ext_resource type="Texture2D" uid="uid://bhh5eo8fmkoyl" path="res://Textures/Player/Green Dino Jump.png" id="4_ihqln"]
 [ext_resource type="Texture2D" uid="uid://bd68cufxq0yvf" path="res://Textures/Player/Green Dino Walk.png" id="5_mkbfl"]
+[ext_resource type="Texture2D" uid="uid://cke851p562cw4" path="res://Textures/Particles/Dust.png" id="8_k424h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf4bn"]
 atlas = ExtResource("3_i2461")
@@ -51,6 +52,14 @@ region = Rect2(216, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jpfxm"]
 atlas = ExtResource("3_i2461")
 region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0fr3"]
+atlas = ExtResource("3_i2461")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xpb4"]
+atlas = ExtResource("3_i2461")
+region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqg8u"]
 atlas = ExtResource("3_gi66s")
@@ -150,6 +159,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a0fr3")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_8xpb4")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tqg8u")
 }, {
 "duration": 1.0,
@@ -203,16 +223,91 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ib33u"]
 size = Vector2(6, 14)
 
+[sub_resource type="Animation" id="Animation_h3xsu"]
+resource_name = "Blink"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ustdm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r7em"]
+_data = {
+"Blink": SubResource("Animation_h3xsu"),
+"RESET": SubResource("Animation_ustdm")
+}
+
+[sub_resource type="Curve" id="Curve_7uac2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0vugy"]
+curve = SubResource("Curve_7uac2")
+
+[sub_resource type="Gradient" id="Gradient_l56cy"]
+colors = PackedColorArray(1, 1, 1, 1, 0.227451, 0.266667, 0.4, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3wex1"]
+gradient = SubResource("Gradient_l56cy")
+
+[sub_resource type="Curve" id="Curve_7xvp2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tvcps"]
+curve = SubResource("Curve_7xvp2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmaj4"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+angle_min = -180.0
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 2.0
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_tvcps")
+color_ramp = SubResource("GradientTexture1D_3wex1")
+alpha_curve = SubResource("CurveTexture_0vugy")
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_kqygu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
+position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_i8yyl")
-animation = &"die"
-frame = 10
-frame_progress = 1.0
+animation = &"idle"
+offset = Vector2(0, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -238,4 +333,23 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_8r7em")
+}
+
+[node name="IFrameTime" type="Timer" parent="."]
+wait_time = 1.25
+
+[node name="HurtParticles" type="GPUParticles2D" parent="."]
+process_mode = 3
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_gmaj4")
+texture = ExtResource("8_k424h")
+one_shot = true
+explosiveness = 1.0
+
 [connection signal="body_entered" from="HazardCollider" to="." method="_on_hazard_collider_body_entered"]
+[connection signal="body_exited" from="HazardCollider" to="." method="_on_hazard_collider_body_exited"]

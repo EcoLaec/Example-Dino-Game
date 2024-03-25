@@ -21,12 +21,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $AnimatedSprite2D
 @onready var coyote_time = $CoyoteTime
 @onready var wall_time = $WallTime
+@onready var i_frame_time = $IFrameTime
+@onready var hazard_collider = $HazardCollider
+@onready var animation_player = $AnimationPlayer
 var stored_wall_normal = Vector2.ZERO
 var clinging = false
 var respawn_position = Vector2.ZERO
 var air_jumps_made = 0
 var just_wall_jumped = false
 var health = 9
+var stored_velocity = Vector2.ZERO
 
 func _ready():
 	respawn_position = global_position
@@ -44,9 +48,12 @@ func _physics_process(delta):
 	# Before Moving
 	var was_on_floor = is_on_floor()
 	var was_on_wall = is_on_wall_only()
+	var was_in_air = not is_on_floor()
+	if was_in_air: stored_velocity = velocity
 	if was_on_wall: stored_wall_normal = get_wall_normal()
 	move_and_slide()
 	# After Moving
+	if was_in_air and is_on_floor(): apply_squish(Vector2((stored_velocity.y / terminal_velocity) * 0.15,-(stored_velocity.y / terminal_velocity) * 0.33))
 	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_ledge: coyote_time.start()
 	var just_left_wall = was_on_wall and not is_on_wall()
@@ -76,6 +83,7 @@ func handle_jump():
 	# Jumping
 	if (is_on_floor() or coyote_time.time_left > 0.0) and Input.is_action_just_pressed("Jump"):
 		velocity.y = jump_velocity
+		apply_squish(Vector2(-0.1,0.15))
 	
 	# Off of Floor
 	if not is_on_floor():
@@ -83,6 +91,7 @@ func handle_jump():
 		if Input.is_action_just_pressed("Jump") and air_jumps_made < air_jumps and coyote_time.time_left == 0.0 and not just_wall_jumped:
 			velocity.y = jump_velocity * air_jump_scale
 			air_jumps_made += 1
+			apply_squish(Vector2(-0.05,0.1))
 		
 		# Short Hops
 		if Input.is_action_just_released("Jump") and velocity.y < jump_velocity / 2:
@@ -134,12 +143,28 @@ func play_death_animation():
 	process_mode = Node.PROCESS_MODE_INHERIT
 	sprite.process_mode = Node.PROCESS_MODE_INHERIT
 
+func play_hurt_animation():
+	sprite.play("hurt")
+	process_mode = Node.PROCESS_MODE_DISABLED
+	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
+	await sprite.animation_finished
+	process_mode = Node.PROCESS_MODE_INHERIT
+	sprite.process_mode = Node.PROCESS_MODE_INHERIT
+	hazard_collider.process_mode = Node.PROCESS_MODE_DISABLED
+	i_frame_time.start()
+	animation_player.play("Blink")
+	await i_frame_time.timeout
+	hazard_collider.process_mode = Node.PROCESS_MODE_INHERIT
+	animation_player.play("RESET")
+
 func die():
 	play_death_animation()
 	await play_death_animation()
 	get_tree().reload_current_scene()
 
-func damage(amount : int, force_respawn : bool):
+func damage(amount : int, force_respawn : bool, body):
+	Global.ui.emit_damage_particles()
+	$HurtParticles.restart()
 	health -= amount
 	if health <= 0:
 		die()
@@ -149,11 +174,15 @@ func damage(amount : int, force_respawn : bool):
 		await play_death_animation()
 		respawn()
 	else:
-		pass
+		play_hurt_animation()
 
-func _on_hazard_collider_body_entered(_body):
-	call_deferred("damage", 1, true)
+func _on_hazard_collider_body_entered(body):
+	if body is TileMap:
+		call_deferred("damage", 1, true, body)
+	else:
+		call_deferred("damage", 1, false, body)
 
-
-func _on_freeze_time_timeout():
-	get_tree().paused = false
+func apply_squish(squish_amount : Vector2):
+	var tween = create_tween().set_trans(Tween.TRANS_BOUNCE)
+	sprite.scale = Vector2(1,1) + squish_amount
+	tween.tween_property(sprite, "scale", Vector2(1,1), 0.25)

@@ -9,11 +9,20 @@ var hp_array = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.ui = self
 	for i in Global.player.max_health / 3:
 		var h = health_object.instantiate()
 		%Health.add_child(h)
 		hp_array.append(h)
 
+func emit_damage_particles():
+	var h = hp_array[ceil(Global.player.health / 3.0) - 1].find_child("GPUParticles2D")
+	h.restart()
+	for i in hp_array.size():
+		var f = Global.rng.randf_range(-10,10)
+		hp_array[i].position.y += f
+		var tween = create_tween().bind_node(self)
+		tween.tween_property(hp_array[i], "position", hp_array[i].position - Vector2(0,f), 0.1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

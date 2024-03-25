@@ -1,4 +1,6 @@
+GPUParticles2D
 Timer
+AnimationPlayer
 TextureRect
 Control
 Container
@@ -10,5 +12,3 @@ CanvasLayer
 CollisionShape2D
 Area2D
 TileMap
-Camera2D
-CharacterBody2D
