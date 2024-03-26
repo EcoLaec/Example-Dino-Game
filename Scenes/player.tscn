@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dn04yp6i2at67"]
+[gd_scene load_steps=47 format=3 uid="uid://dn04yp6i2at67"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_kqygu"]
 [ext_resource type="Texture2D" uid="uid://c5muek6ejvrjm" path="res://Textures/Player/Green Dino Cling.png" id="1_kx87q"]
@@ -223,6 +223,12 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ib33u"]
 size = Vector2(6, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahseq"]
+size = Vector2(16.5, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5iqh"]
+size = Vector2(10, 9)
+
 [sub_resource type="Animation" id="Animation_h3xsu"]
 resource_name = "Blink"
 length = 0.2
@@ -325,6 +331,22 @@ collision_mask = 4
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ib33u")
 
+[node name="TriggerCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerCollider"]
+position = Vector2(-0.25, 0.5)
+shape = SubResource("RectangleShape2D_ahseq")
+
+[node name="HeadCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadCollider"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_x5iqh")
+
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -353,3 +375,4 @@ explosiveness = 1.0
 
 [connection signal="body_entered" from="HazardCollider" to="." method="_on_hazard_collider_body_entered"]
 [connection signal="body_exited" from="HazardCollider" to="." method="_on_hazard_collider_body_exited"]
+[connection signal="area_entered" from="HeadCollider" to="." method="_on_head_collider_area_entered"]

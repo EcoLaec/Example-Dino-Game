@@ -1,9 +1,6 @@
 res://Scenes/player.tscn
 res://Scenes/Levels/world.tscn
 res://Scenes/Levels/level0.tscn
-res://Scripts/global.gd
-res://Scripts/player.gd
-res://Scripts/UI.gd
-res://Scripts/ui.tscn
-res://Scenes/UI/ui.tscn
-res://Scenes/UI/health_object.tscn
+res://Scenes/Enemies/anklyo.tscn
+res://Scenes/Enemies/enemy.tscn
+res://Scenes/Enemies/ptero.tscn

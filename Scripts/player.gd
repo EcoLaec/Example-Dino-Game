@@ -75,6 +75,7 @@ func handle_wall_jump():
 		velocity.y = jump_velocity * wall_jump_vertical_scale
 		just_wall_jumped = true
 		air_jumps_made = 0
+		apply_squish(Vector2(-0.1,0.15))
 
 func handle_jump():
 	# Reset Air Jumps
@@ -83,7 +84,7 @@ func handle_jump():
 	# Jumping
 	if (is_on_floor() or coyote_time.time_left > 0.0) and Input.is_action_just_pressed("Jump"):
 		velocity.y = jump_velocity
-		apply_squish(Vector2(-0.1,0.15))
+		apply_squish(Vector2(-0.15,0.2))
 	
 	# Off of Floor
 	if not is_on_floor():
@@ -91,7 +92,7 @@ func handle_jump():
 		if Input.is_action_just_pressed("Jump") and air_jumps_made < air_jumps and coyote_time.time_left == 0.0 and not just_wall_jumped:
 			velocity.y = jump_velocity * air_jump_scale
 			air_jumps_made += 1
-			apply_squish(Vector2(-0.05,0.1))
+			apply_squish(Vector2(-0.1,0.15))
 		
 		# Short Hops
 		if Input.is_action_just_released("Jump") and velocity.y < jump_velocity / 2:
@@ -176,6 +177,11 @@ func damage(amount : int, force_respawn : bool, body):
 	else:
 		play_hurt_animation()
 
+func bounce(scale : float):
+	velocity.y = jump_velocity * scale
+	air_jumps_made = 0
+	apply_squish(Vector2(-0.1,0.15))
+
 func _on_hazard_collider_body_entered(body):
 	if body is TileMap:
 		call_deferred("damage", 1, true, body)
@@ -186,3 +192,10 @@ func apply_squish(squish_amount : Vector2):
 	var tween = create_tween().set_trans(Tween.TRANS_BOUNCE)
 	sprite.scale = Vector2(1,1) + squish_amount
 	tween.tween_property(sprite, "scale", Vector2(1,1), 0.25)
+
+func _on_head_collider_area_entered(area):
+	if area.is_in_group("Enemy"):
+		if velocity.y > 0.0:
+			var enemy = area.get_parent()
+			enemy.damage()
+			bounce(enemy.bounce_scale)

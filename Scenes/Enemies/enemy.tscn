@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccy3km3r33mnq"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_550kv"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_550kv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="PlayerCheck" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+
+[node name="FloorCheck" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCheck"]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_exited" from="FloorCheck" to="." method="_on_floor_check_body_exited"]
