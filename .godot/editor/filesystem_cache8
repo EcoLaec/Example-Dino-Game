@@ -1,29 +1,37 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711629890
+::res://::1711633840
 icon.svg::CompressedTexture2D::8810243576145294445::1710514985::1710514990::1::::<><>::
-::res://Scenes/::1711629843
-player.tscn::PackedScene::8125130950207940090::1711629827::0::1::::<><>::res://Scripts/player.gd<>uid://c5muek6ejvrjm::::res://Textures/Player/Green Dino Cling.png<>uid://x7ygpihhb2lv::::res://Textures/Player/Green Dino Fall.png<>uid://7cxr1xtgfs04::::res://Textures/Player/Green Dino Idle.png<>uid://ckteawgli8q62::::res://Textures/Player/Green Dino Die.png<>uid://bhh5eo8fmkoyl::::res://Textures/Player/Green Dino Jump.png<>uid://bd68cufxq0yvf::::res://Textures/Player/Green Dino Walk.png<>uid://cke851p562cw4::::res://Textures/Particles/Dust.png
+::res://Resources/::1711633836
+::res://Resources/UI/::1711633852
+DinoTheme.tres::Theme::8195867329539682932::1711633795::0::1::::<><>::uid://ctj3v8aj75lcd::::res://Assets/Fonts/slkscr.ttf<>uid://bqukkarfdwxr2::::res://Assets/Presets/stone_dark_button.tres<>uid://mk28b0jr6h6g::::res://Assets/Presets/stone_light_button.tres
+slkscr.ttf::FontFile::946094514090935018::1711633851::1711633852::1::::<><>::
+::res://Scenes/::1711633352
+player.tscn::PackedScene::8125130950207940090::1711633352::0::1::::<><>::res://Scripts/player.gd<>uid://c5muek6ejvrjm::::res://Textures/Player/Green Dino Cling.png<>uid://x7ygpihhb2lv::::res://Textures/Player/Green Dino Fall.png<>uid://7cxr1xtgfs04::::res://Textures/Player/Green Dino Idle.png<>uid://ckteawgli8q62::::res://Textures/Player/Green Dino Die.png<>uid://bhh5eo8fmkoyl::::res://Textures/Player/Green Dino Jump.png<>uid://bd68cufxq0yvf::::res://Textures/Player/Green Dino Walk.png<>uid://cke851p562cw4::::res://Textures/Particles/Dust.png
 ::res://Scenes/Enemies/::1711629827
 anklyo.tscn::PackedScene::8532509801853334785::1711629827::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://cyagf1ddvh0ou::::res://Textures/Enemies/Ankylo Hurt.png<>uid://84r3a540yjha::::res://Textures/Enemies/Ankylo Walk.png
 enemy.tscn::PackedScene::4964482728841871290::1711629827::0::1::::<><>::res://Scripts/Enemy.gd
 ptero.tscn::PackedScene::8741850618991282521::1711629827::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://bnrbxaejbsafb::::res://Textures/Enemies/Ptero Die.png<>uid://jxgrm2lfe1fk::::res://Textures/Enemies/Ptero Fly.png
-::res://Scenes/Levels/::1711629843
-level0.tscn::PackedScene::-1::1711629843::0::1::::<><>::
-world.tscn::PackedScene::7689576657179343787::1711629827::0::1::::<><>::uid://dn04yp6i2at67::::res://Scenes/player.tscn<>uid://uj007ovtvuj3::::res://Scenes/UI/ui.tscn<>uid://btriorb3tk8te::::res://Textures/Tiles/Grass Tileset.png<>uid://dq14ja0aljp2e::::res://Textures/Tiles/Stone Tileset.png<>uid://be4trp6y3gm6h::::res://Textures/Tiles/Lava Tile.png<>uid://tsc128od63sy::::res://Textures/Tiles/Spike Tiles.png
-::res://Scenes/Pickups/::1711629843
-egg.tscn::PackedScene::5432994361629121768::1711629843::0::1::::<><>::uid://b6adw5phfhsfo::::res://Scenes/Pickups/pick_up.tscn<>uid://g1g4lfsdeaig::::res://Textures/Pickups/Green Egg.png<>res://Scripts/egg.gd
-pick_up.tscn::PackedScene::4562497874113908392::1711629843::0::1::::<><>::res://Scripts/pickup.gd
-::res://Scenes/UI/::1711629827
+::res://Scenes/Levels/::1711633352
+level0.tscn::PackedScene::5219436048193852410::1711633351::0::1::::<><>::uid://dhs5g66i3p3rb::::res://Scenes/Levels/world.tscn<>uid://dtthgpoy7tku0::::res://Scenes/Enemies/anklyo.tscn<>uid://dwsvac5bnltjt::::res://Scenes/Enemies/ptero.tscn<>uid://cjn1vgu06kwqq::::res://Scenes/Pickups/egg.tscn
+world.tscn::PackedScene::7689576657179343787::1711633351::0::1::::<><>::res://Scripts/world.gd<>uid://dn04yp6i2at67::::res://Scenes/player.tscn<>uid://uj007ovtvuj3::::res://Scenes/UI/ui.tscn<>uid://btriorb3tk8te::::res://Textures/Tiles/Grass Tileset.png<>uid://dq14ja0aljp2e::::res://Textures/Tiles/Stone Tileset.png<>uid://be4trp6y3gm6h::::res://Textures/Tiles/Lava Tile.png<>uid://tsc128od63sy::::res://Textures/Tiles/Spike Tiles.png
+::res://Scenes/Pickups/::1711633397
+egg.tscn::PackedScene::5432994361629121768::1711633397::0::1::::<><>::uid://b6adw5phfhsfo::::res://Scenes/Pickups/pick_up.tscn<>uid://bjksws5dojqwj::::res://Textures/Pickups/Blue Egg.png<>uid://g1g4lfsdeaig::::res://Textures/Pickups/Green Egg.png<>res://Scripts/egg.gd<>uid://ddv4cp6yxdr30::::res://Textures/Pickups/Red Egg.png<>uid://bip4fmvg3nos0::::res://Textures/Pickups/Yellow Egg.png<>uid://rygej4c4fjya::::res://Sounds/Pickups/Pickup Egg Sound.wav
+pick_up.tscn::PackedScene::4562497874113908392::1711633352::0::1::::<><>::res://Scripts/pickup.gd
+::res://Scenes/UI/::1711633840
 health_object.tscn::PackedScene::7204495487805982892::1711629827::0::1::::<><>::uid://ckgnp4sl835na::::res://Textures/Player/Egg Full.png<>uid://b8f1dkrikerjw::::res://Textures/Particles/Egg Shard.png
-ui.tscn::PackedScene::1423920545568819222::1711629827::0::1::::<><>::res://Scripts/UI.gd<>uid://dav58uib37rpk::::res://Scenes/UI/health_object.tscn<>uid://ckgnp4sl835na::::res://Textures/Player/Egg Full.png<>uid://duibvs32p53qy::::res://Textures/Player/Egg Hurt.png<>uid://cjmw6uiixbxg2::::res://Textures/Player/Egg Badly Hurt.png<>uid://c7ev82ot4h6lj::::res://Textures/Player/Egg Broken.png
-::res://Scripts/::1711629843
-egg.gd::GDScript::-1::1711629843::0::1::::<>PickUp<>::
+ui.tscn::PackedScene::1423920545568819222::1711633476::0::1::::<><>::res://Scripts/UI.gd<>uid://dav58uib37rpk::::res://Scenes/UI/health_object.tscn<>uid://ckgnp4sl835na::::res://Textures/Player/Egg Full.png<>uid://duibvs32p53qy::::res://Textures/Player/Egg Hurt.png<>uid://cjmw6uiixbxg2::::res://Textures/Player/Egg Badly Hurt.png<>uid://c7ev82ot4h6lj::::res://Textures/Player/Egg Broken.png
+::res://Scripts/::1711633397
+egg.gd::GDScript::-1::1711633062::0::1::::<>PickUp<>::
 Enemy.gd::GDScript::-1::1711629827::0::1::::<>CharacterBody2D<>::
-global.gd::GDScript::-1::1711629827::0::1::::<>Node<>::
-pickup.gd::GDScript::-1::1711629843::0::1::::PickUp<>Area2D<>::
-player.gd::GDScript::-1::1711629843::0::1::::Player<>CharacterBody2D<>::
+global.gd::GDScript::-1::1711632626::0::1::::<>Node<>::
+pickup.gd::GDScript::-1::1711631834::0::1::::PickUp<>Area2D<>::
+player.gd::GDScript::-1::1711629981::0::1::::<>CharacterBody2D<>::
 UI.gd::GDScript::-1::1711629827::0::1::::<>CanvasLayer<>::
-::res://Textures/::1711629843
+world.gd::GDScript::-1::1711633397::0::1::::<>Node2D<>::
+::res://Sounds/::1711631654
+::res://Sounds/Pickups/::1711631655
+Pickup Egg Sound.wav::AudioStreamWAV::1243127370715515212::1711631603::1711631655::1::::<><>::
+::res://Textures/::1711633868
 ::res://Textures/Enemies/::1711629827
 Ankylo Hurt.png::CompressedTexture2D::6457748216031293436::1711629827::1711629827::1::::<><>::
 Ankylo Walk.png::CompressedTexture2D::2377181033725291266::1711629827::1711629827::1::::<><>::
@@ -34,8 +42,11 @@ Ptero Fly.png::CompressedTexture2D::679575614035228076::1711629827::1711629827::
 ::res://Textures/Particles/::1711629827
 Dust.png::CompressedTexture2D::5485045939545928665::1711629827::1711629827::1::::<><>::
 Egg Shard.png::CompressedTexture2D::4714558963584311820::1711629827::1711629827::1::::<><>::
-::res://Textures/Pickups/::1711629843
+::res://Textures/Pickups/::1711630121
+Blue Egg.png::CompressedTexture2D::3039897239231517373::1711630121::1711630121::1::::<><>::
 Green Egg.png::CompressedTexture2D::475223559716467046::1711629843::1711629843::1::::<><>::
+Red Egg.png::CompressedTexture2D::7414945716067206365::1711630121::1711630121::1::::<><>::
+Yellow Egg.png::CompressedTexture2D::2980667483899660893::1711630121::1711630121::1::::<><>::
 ::res://Textures/Player/::1711629827
 Egg Badly Hurt.png::CompressedTexture2D::5430705689848848315::1711629827::1711629827::1::::<><>::
 Egg Broken.png::CompressedTexture2D::7028477303526488675::1711629827::1711629827::1::::<><>::
@@ -52,3 +63,6 @@ Grass Tileset.png::CompressedTexture2D::3755614767431303758::1710515214::1710515
 Lava Tile.png::CompressedTexture2D::2728227831339217541::1710515221::1710515221::1::::<><>::
 Spike Tiles.png::CompressedTexture2D::1370916163073107476::1710515225::1710515225::1::::<><>::
 Stone Tileset.png::CompressedTexture2D::8337734274463929102::1710515214::1710515214::1::::<><>::
+::res://Textures/UI/::1711633873
+Stone_NineSquare.png::CompressedTexture2D::2197908863028474123::1711633873::1711633873::1::::<><>::
+Stone_NineSquare_Pressed.png::CompressedTexture2D::8451139572537978276::1711633873::1711633873::1::::<><>::

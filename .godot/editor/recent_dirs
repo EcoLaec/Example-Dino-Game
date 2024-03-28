@@ -1,9 +1,11 @@
+res://Scenes/Levels
+res://Resources/UI
+res://Scripts
+res://Textures/Pickups
 res://Scenes/Enemies
 res://Textures/Enemies
-res://Scripts
 res://Textures/Player
 res://Textures/Particles
 res://Scenes/UI
-res://Scenes/Levels
 res://Textures/Tiles
 res://Scenes

@@ -1,18 +1,13 @@
 extends PickUp
 
-@export var speed = 150.0
-var follow_target = null
-var disabled_pickup = false
+@export_enum("blue", "green", "red", "yellow") var egg_color: String = "green"
 
-func _physics_process(delta):
-	if disabled_pickup:
-		var distance_to_target = global_position.distance_to(follow_target.global_position)
-		if distance_to_target > 16:
-			global_position = global_position.move_toward(follow_target.global_position, speed * (distance_to_target / 32) * delta)
+func _ready():
+	super._ready()
+	$AnimatedSprite2D.play(egg_color)
+	print(egg_color)
 
-func disable_pickup(body):
-	if body is Player:
-		follow_target = body.egg_chain.back() if body.egg_chain.back() else body
-		body.egg_chain.append(self)
-	super.disable_pickup(body)
-	disabled_pickup = true
+func pickup(body):
+	Global.level.eggs_collected[egg_color] = true
+	if Global.level.eggs_collected.values().all(func(e): return e): Global.level_completed.emit()
+	super.pickup(body)
