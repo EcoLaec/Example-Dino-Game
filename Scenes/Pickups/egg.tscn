@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://cjn1vgu06kwqq"]
+
+[ext_resource type="PackedScene" uid="uid://b6adw5phfhsfo" path="res://Scenes/Pickups/pick_up.tscn" id="1_fycwn"]
+[ext_resource type="Texture2D" uid="uid://g1g4lfsdeaig" path="res://Textures/Pickups/Green Egg.png" id="2_syi1d"]
+[ext_resource type="Script" path="res://Scripts/egg.gd" id="2_wuw6r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jx5t"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0163n"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q1kd"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwmlr"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1al2d"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(52, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5p46"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(65, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qync5"]
+atlas = ExtResource("2_syi1d")
+region = Rect2(78, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jsri4"]
+animations = [{
+"frames": [{
+"duration": 30.0,
+"texture": SubResource("AtlasTexture_1jx5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0163n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q1kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwmlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1al2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5p46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qync5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn6yd"]
+radius = 6.0
+
+[node name="Egg" instance=ExtResource("1_fycwn")]
+script = ExtResource("2_wuw6r")
+speed = 150.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_jsri4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_cn6yd")
