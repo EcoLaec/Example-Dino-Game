@@ -168,7 +168,7 @@ func die():
 	await play_death_animation()
 	get_tree().reload_current_scene()
 
-func damage(amount : int, force_respawn : bool, body):
+func damage(amount : int, force_respawn : bool, _body):
 	Global.ui.emit_damage_particles()
 	$HurtParticles.restart()
 	health -= amount
@@ -182,8 +182,8 @@ func damage(amount : int, force_respawn : bool, body):
 	else:
 		play_hurt_animation()
 
-func bounce(scale : float):
-	velocity.y = jump_velocity * scale
+func bounce(b_scale : float):
+	velocity.y = jump_velocity * b_scale
 	air_jumps_made = 0
 	apply_squish(Vector2(-0.1,0.15))
 

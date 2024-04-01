@@ -34,7 +34,7 @@ func die():
 	$PlayerCheck.set_collision_layer_value(4,false)
 	is_moving = false
 	$AnimatedSprite2D.play("death")
-	Global.score += points
+	Global.level.score += points
 
 func hurt():
 	is_moving = false
@@ -54,6 +54,6 @@ func _on_animated_sprite_2d_animation_finished():
 		is_moving = true
 		$AnimatedSprite2D.play("move")
 
-func _on_floor_check_body_exited(body):
+func _on_floor_check_body_exited(_body):
 	if checks_floor:
 		change_direction()
