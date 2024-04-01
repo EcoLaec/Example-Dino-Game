@@ -53,7 +53,9 @@ func _physics_process(delta):
 	if was_on_wall: stored_wall_normal = get_wall_normal()
 	move_and_slide()
 	# After Moving
-	if was_in_air and is_on_floor(): apply_squish(Vector2((stored_velocity.y / terminal_velocity) * 0.15,-(stored_velocity.y / terminal_velocity) * 0.33))
+	if was_in_air and is_on_floor(): 
+		apply_squish(Vector2((stored_velocity.y / terminal_velocity) * 0.15,-(stored_velocity.y / terminal_velocity) * 0.33))
+		$LandSoundPool.playRandomSound(1.0,-30.0 + (15.0 * (stored_velocity.y / terminal_velocity)))
 	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_ledge: coyote_time.start()
 	var just_left_wall = was_on_wall and not is_on_wall()
@@ -76,6 +78,7 @@ func handle_wall_jump():
 		just_wall_jumped = true
 		air_jumps_made = 0
 		apply_squish(Vector2(-0.1,0.15))
+		$JumpSoundQueue.playSound(1.3,-17.5)
 
 func handle_jump():
 	# Reset Air Jumps
@@ -85,6 +88,7 @@ func handle_jump():
 	if (is_on_floor() or coyote_time.time_left > 0.0) and Input.is_action_just_pressed("Jump"):
 		velocity.y = jump_velocity
 		apply_squish(Vector2(-0.15,0.2))
+		$JumpSoundQueue.playSound(1.0,-15.0)
 	
 	# Off of Floor
 	if not is_on_floor():
@@ -93,6 +97,7 @@ func handle_jump():
 			velocity.y = jump_velocity * air_jump_scale
 			air_jumps_made += 1
 			apply_squish(Vector2(-0.1,0.15))
+			$JumpSoundQueue.playSound(1.0 + (0.2 * air_jumps_made),-17.5)
 		
 		# Short Hops
 		if Input.is_action_just_released("Jump") and velocity.y < jump_velocity / 2:
@@ -199,3 +204,8 @@ func _on_head_collider_area_entered(area):
 			var enemy = area.get_parent()
 			enemy.damage()
 			bounce(enemy.bounce_scale)
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if sprite.animation == "walk" and sprite.frame == 1:
+		$StepSoundPool.playRandomSound(1.0,-10.0)

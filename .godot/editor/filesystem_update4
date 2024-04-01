@@ -1,6 +1,5 @@
 res://Scenes/player.tscn
 res://Scenes/Levels/world.tscn
 res://Scenes/Levels/level0.tscn
-res://Scenes/Enemies/anklyo.tscn
-res://Scenes/Enemies/enemy.tscn
-res://Scenes/Enemies/ptero.tscn
+res://Scenes/sound_queue.tscn
+res://Scenes/sound_pool.tscn

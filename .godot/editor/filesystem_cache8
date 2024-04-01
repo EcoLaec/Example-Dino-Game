@@ -1,23 +1,37 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711480385
+::res://::1711971511
 icon.svg::CompressedTexture2D::8810243576145294445::1711368329::1711368384::1::::<><>::
-::res://Scenes/::1711476920
-player.tscn::PackedScene::8125130950207940090::1711476920::0::1::::<><>::res://Scripts/player.gd<>uid://c5muek6ejvrjm::::res://Textures/Player/Green Dino Cling.png<>uid://x7ygpihhb2lv::::res://Textures/Player/Green Dino Fall.png<>uid://7cxr1xtgfs04::::res://Textures/Player/Green Dino Idle.png<>uid://ckteawgli8q62::::res://Textures/Player/Green Dino Die.png<>uid://bhh5eo8fmkoyl::::res://Textures/Player/Green Dino Jump.png<>uid://bd68cufxq0yvf::::res://Textures/Player/Green Dino Walk.png<>uid://cke851p562cw4::::res://Textures/Particles/Dust.png
-::res://Scenes/Enemies/::1711476921
-anklyo.tscn::PackedScene::8532509801853334785::1711476920::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://cyagf1ddvh0ou::::res://Textures/Enemies/Ankylo Hurt.png<>uid://84r3a540yjha::::res://Textures/Enemies/Ankylo Walk.png
-enemy.tscn::PackedScene::4964482728841871290::1711476920::0::1::::<><>::res://Scripts/Enemy.gd
-ptero.tscn::PackedScene::8741850618991282521::1711476921::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://bnrbxaejbsafb::::res://Textures/Enemies/Ptero Die.png<>uid://jxgrm2lfe1fk::::res://Textures/Enemies/Ptero Fly.png
-::res://Scenes/Levels/::1711476920
-level0.tscn::PackedScene::5219436048193852410::1711476920::0::1::::<><>::uid://dhs5g66i3p3rb::::res://Scenes/Levels/world.tscn<>uid://dtthgpoy7tku0::::res://Scenes/Enemies/anklyo.tscn<>uid://dwsvac5bnltjt::::res://Scenes/Enemies/ptero.tscn
-world.tscn::PackedScene::7689576657179343787::1711476920::0::1::::<><>::uid://dn04yp6i2at67::::res://Scenes/player.tscn<>uid://uj007ovtvuj3::::res://Scenes/UI/ui.tscn<>uid://btriorb3tk8te::::res://Textures/Tiles/Grass Tileset.png<>uid://dq14ja0aljp2e::::res://Textures/Tiles/Stone Tileset.png<>uid://be4trp6y3gm6h::::res://Textures/Tiles/Lava Tile.png<>uid://tsc128od63sy::::res://Textures/Tiles/Spike Tiles.png
+::res://Scenes/::1711569775
+player.tscn::PackedScene::8125130950207940090::1711569775::0::1::::<><>::res://Scripts/player.gd<>uid://c5muek6ejvrjm::::res://Textures/Player/Green Dino Cling.png<>uid://x7ygpihhb2lv::::res://Textures/Player/Green Dino Fall.png<>uid://7cxr1xtgfs04::::res://Textures/Player/Green Dino Idle.png<>uid://ckteawgli8q62::::res://Textures/Player/Green Dino Die.png<>uid://bhh5eo8fmkoyl::::res://Textures/Player/Green Dino Jump.png<>uid://bd68cufxq0yvf::::res://Textures/Player/Green Dino Walk.png<>uid://cke851p562cw4::::res://Textures/Particles/Dust.png<>uid://djl3fgixsmslx::::res://Scenes/sound_queue.tscn<>uid://3endvd8bf31o::::res://Sounds/Player/jump sound.wav<>uid://14ilucvoh6ih::::res://Scenes/sound_pool.tscn<>uid://m7rbwwlwf4j::::res://Sounds/Player/land sound 1.wav<>uid://c8pxj8m6xa38c::::res://Sounds/Player/land sound 2.wav<>uid://drcvl1q8e41kr::::res://Sounds/Player/land sound 3.wav<>uid://cerrai0phf7on::::res://Sounds/Player/footstep 1.wav<>uid://dq8g35iwve3kx::::res://Sounds/Player/footstep 2.wav<>uid://dbfbpm2cy8wkd::::res://Sounds/Player/footstep 3.wav<>uid://c4bdobn8fw63h::::res://Sounds/Player/footstep 4.wav
+sound_pool.tscn::PackedScene::1885283323661436619::1711569775::0::1::::<><>::res://Scripts/SoundPool.gd
+sound_queue.tscn::PackedScene::7815379132451335477::1711569775::0::1::::<><>::res://Scripts/SoundQueue.gd
+::res://Scenes/Enemies/::1711540734
+anklyo.tscn::PackedScene::8532509801853334785::1711540734::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://cyagf1ddvh0ou::::res://Textures/Enemies/Ankylo Hurt.png<>uid://84r3a540yjha::::res://Textures/Enemies/Ankylo Walk.png
+enemy.tscn::PackedScene::4964482728841871290::1711540734::0::1::::<><>::res://Scripts/Enemy.gd
+ptero.tscn::PackedScene::8741850618991282521::1711540734::0::1::::<><>::uid://ccy3km3r33mnq::::res://Scenes/Enemies/enemy.tscn<>uid://bnrbxaejbsafb::::res://Textures/Enemies/Ptero Die.png<>uid://jxgrm2lfe1fk::::res://Textures/Enemies/Ptero Fly.png
+::res://Scenes/Levels/::1711569775
+level0.tscn::PackedScene::5219436048193852410::1711569775::0::1::::<><>::uid://dhs5g66i3p3rb::::res://Scenes/Levels/world.tscn<>uid://dtthgpoy7tku0::::res://Scenes/Enemies/anklyo.tscn<>uid://dwsvac5bnltjt::::res://Scenes/Enemies/ptero.tscn
+world.tscn::PackedScene::7689576657179343787::1711569775::0::1::::<><>::uid://dn04yp6i2at67::::res://Scenes/player.tscn<>uid://uj007ovtvuj3::::res://Scenes/UI/ui.tscn<>uid://btriorb3tk8te::::res://Textures/Tiles/Grass Tileset.png<>uid://dq14ja0aljp2e::::res://Textures/Tiles/Stone Tileset.png<>uid://be4trp6y3gm6h::::res://Textures/Tiles/Lava Tile.png<>uid://tsc128od63sy::::res://Textures/Tiles/Spike Tiles.png
 ::res://Scenes/UI/::1711456370
 health_object.tscn::PackedScene::7204495487805982892::1711456370::0::1::::<><>::uid://ckgnp4sl835na::::res://Textures/Player/Egg Full.png<>uid://b8f1dkrikerjw::::res://Textures/Particles/Egg Shard.png
 ui.tscn::PackedScene::1423920545568819222::1711456370::0::1::::<><>::res://Scripts/UI.gd<>uid://dav58uib37rpk::::res://Scenes/UI/health_object.tscn<>uid://ckgnp4sl835na::::res://Textures/Player/Egg Full.png<>uid://duibvs32p53qy::::res://Textures/Player/Egg Hurt.png<>uid://cjmw6uiixbxg2::::res://Textures/Player/Egg Badly Hurt.png<>uid://c7ev82ot4h6lj::::res://Textures/Player/Egg Broken.png
-::res://Scripts/::1711458684
+::res://Scripts/::1711552295
 Enemy.gd::GDScript::-1::1711458632::0::1::::<>CharacterBody2D<>::
 global.gd::GDScript::-1::1711382693::0::1::::<>Node<>::
-player.gd::GDScript::-1::1711458684::0::1::::<>CharacterBody2D<>::
+player.gd::GDScript::-1::1711552295::0::1::::<>CharacterBody2D<>::
+SoundPool.gd::GDScript::-1::1711551447::0::1::::<>Node<>::
+SoundQueue.gd::GDScript::-1::1711550895::0::1::::SoundQueue<>Node<>::
 UI.gd::GDScript::-1::1711383456::0::1::::<>CanvasLayer<>::
+::res://Sounds/::1711548509
+::res://Sounds/Player/::1711548514
+footstep 1.wav::AudioStreamWAV::5089723812132408993::1711548514::1711548514::1::::<><>::
+footstep 2.wav::AudioStreamWAV::8350823908444501771::1711548514::1711548514::1::::<><>::
+footstep 3.wav::AudioStreamWAV::7239860959503161015::1711548514::1711548514::1::::<><>::
+footstep 4.wav::AudioStreamWAV::6810589436848928667::1711548514::1711548514::1::::<><>::
+jump sound.wav::AudioStreamWAV::1974340920294525962::1711548506::1711548509::1::::<><>::
+land sound 1.wav::AudioStreamWAV::26745922837825175::1711548506::1711548509::1::::<><>::
+land sound 2.wav::AudioStreamWAV::7121453189978415268::1711548506::1711548509::1::::<><>::
+land sound 3.wav::AudioStreamWAV::8357897240844881813::1711548506::1711548509::1::::<><>::
 ::res://Textures/::1711457259
 ::res://Textures/Enemies/::1711457260
 Ankylo Hurt.png::CompressedTexture2D::6457748216031293436::1711457256::1711457260::1::::<><>::

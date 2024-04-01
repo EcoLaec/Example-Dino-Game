@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://14ilucvoh6ih"]
+
+[ext_resource type="Script" path="res://Scripts/SoundPool.gd" id="1_huc6w"]
+
+[node name="SoundPool" type="Node"]
+script = ExtResource("1_huc6w")

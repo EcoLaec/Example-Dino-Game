@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dn04yp6i2at67"]
+[gd_scene load_steps=57 format=3 uid="uid://dn04yp6i2at67"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_kqygu"]
 [ext_resource type="Texture2D" uid="uid://c5muek6ejvrjm" path="res://Textures/Player/Green Dino Cling.png" id="1_kx87q"]
@@ -8,6 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://bhh5eo8fmkoyl" path="res://Textures/Player/Green Dino Jump.png" id="4_ihqln"]
 [ext_resource type="Texture2D" uid="uid://bd68cufxq0yvf" path="res://Textures/Player/Green Dino Walk.png" id="5_mkbfl"]
 [ext_resource type="Texture2D" uid="uid://cke851p562cw4" path="res://Textures/Particles/Dust.png" id="8_k424h"]
+[ext_resource type="PackedScene" uid="uid://djl3fgixsmslx" path="res://Scenes/sound_queue.tscn" id="9_3hwh2"]
+[ext_resource type="AudioStream" uid="uid://3endvd8bf31o" path="res://Sounds/Player/jump sound.wav" id="10_ncli2"]
+[ext_resource type="PackedScene" uid="uid://14ilucvoh6ih" path="res://Scenes/sound_pool.tscn" id="11_hh4e8"]
+[ext_resource type="AudioStream" uid="uid://m7rbwwlwf4j" path="res://Sounds/Player/land sound 1.wav" id="12_6rt6m"]
+[ext_resource type="AudioStream" uid="uid://c8pxj8m6xa38c" path="res://Sounds/Player/land sound 2.wav" id="13_3tth2"]
+[ext_resource type="AudioStream" uid="uid://drcvl1q8e41kr" path="res://Sounds/Player/land sound 3.wav" id="14_r70kp"]
+[ext_resource type="AudioStream" uid="uid://cerrai0phf7on" path="res://Sounds/Player/footstep 1.wav" id="15_bp82b"]
+[ext_resource type="AudioStream" uid="uid://dq8g35iwve3kx" path="res://Sounds/Player/footstep 2.wav" id="16_dbers"]
+[ext_resource type="AudioStream" uid="uid://dbfbpm2cy8wkd" path="res://Sounds/Player/footstep 3.wav" id="17_6umlm"]
+[ext_resource type="AudioStream" uid="uid://c4bdobn8fw63h" path="res://Sounds/Player/footstep 4.wav" id="18_aw5a6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf4bn"]
 atlas = ExtResource("3_i2461")
@@ -312,7 +322,7 @@ script = ExtResource("1_kqygu")
 process_mode = 3
 position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_i8yyl")
-animation = &"idle"
+animation = &"walk"
 offset = Vector2(0, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -373,6 +383,59 @@ texture = ExtResource("8_k424h")
 one_shot = true
 explosiveness = 1.0
 
+[node name="JumpSoundQueue" parent="." instance=ExtResource("9_3hwh2")]
+count = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="JumpSoundQueue"]
+stream = ExtResource("10_ncli2")
+
+[node name="LandSoundPool" parent="." instance=ExtResource("11_hh4e8")]
+
+[node name="SoundQueue" parent="LandSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LandSoundPool/SoundQueue"]
+stream = ExtResource("12_6rt6m")
+
+[node name="SoundQueue2" parent="LandSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LandSoundPool/SoundQueue2"]
+stream = ExtResource("13_3tth2")
+
+[node name="SoundQueue3" parent="LandSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LandSoundPool/SoundQueue3"]
+stream = ExtResource("14_r70kp")
+
+[node name="StepSoundPool" parent="." instance=ExtResource("11_hh4e8")]
+
+[node name="SoundQueue" parent="StepSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StepSoundPool/SoundQueue"]
+stream = ExtResource("15_bp82b")
+
+[node name="SoundQueue2" parent="StepSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StepSoundPool/SoundQueue2"]
+stream = ExtResource("16_dbers")
+
+[node name="SoundQueue3" parent="StepSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StepSoundPool/SoundQueue3"]
+stream = ExtResource("17_6umlm")
+
+[node name="SoundQueue4" parent="StepSoundPool" instance=ExtResource("9_3hwh2")]
+count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StepSoundPool/SoundQueue4"]
+stream = ExtResource("18_aw5a6")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="body_entered" from="HazardCollider" to="." method="_on_hazard_collider_body_entered"]
 [connection signal="body_exited" from="HazardCollider" to="." method="_on_hazard_collider_body_exited"]
 [connection signal="area_entered" from="HeadCollider" to="." method="_on_head_collider_area_entered"]
